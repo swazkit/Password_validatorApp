@@ -75,9 +75,6 @@ button:hover {
     color: #E5F0FF;
 }
 
-span {
-    color: #D5A419;
-}
 
 .header-links {
     display: flex;
@@ -140,6 +137,11 @@ li {
     gap: 10px;
 }
 
-li > #validated {
+.validated {
     color: rgba(229, 240, 255, 0.5);
+}
+
+.flex {
+    display: flex;
+    gap: 10px;
 }

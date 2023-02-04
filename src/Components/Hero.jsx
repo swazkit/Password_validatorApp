@@ -1,5 +1,9 @@
 import React from "react"
 import { useState } from "react"
+import Icon from "react-icons-kit"
+import {arrows_circle_check} from 'react-icons-kit/linea/arrows_circle_check'
+import {arrows_exclamation} from 'react-icons-kit/linea/arrows_exclamation'
+
 
 export default function Hero() {
 
@@ -12,6 +16,7 @@ export default function Hero() {
     } 
 
 
+    const [lowerValidated, setLowerValidated] = useState(false);
     const [capitalValidated, setCapitalValidated] = useState(false);
     const [numberValidated, setNumberValidated] = useState(false);
     const [speacialCharecterValidated, setSpeacialCharecterValidated] = useState(false);
@@ -19,10 +24,17 @@ export default function Hero() {
 
     const handleChange = (value) => {
         // regex
+        const lower = new RegExp('(?=.*[a-z])')
         const capital = new RegExp('(?=.*[A-Z])');
         const number = new RegExp('(?=.*[0-9])');
         const speacial = new RegExp('(?=.*[!@#$%^&*?])');
         const length = new RegExp('(?=.{8,})');
+
+        if(lower.test(value)){
+            setLowerValidated(true)
+        } else {
+            setLowerValidated(false)
+        }
 
         if(capital.test(value)){
             setCapitalValidated(true)
@@ -79,11 +91,45 @@ export default function Hero() {
                     <form>
                         <div className="info-box">
                             <ul>
-                                <li><span className="list">At Least 1 Lower Case</span></li>
-                                <li><span className={capitalValidated?'validated':'not-validated'} id="list">At Least 1 Capital Letter</span></li>
-                                <li><span className="list">At Least 1 Number</span></li>
-                                <li><span className="list">At Least 1 </span></li>
-                                <li><span className="list">Minimum 7 Charecter long</span></li>
+                                <li className="flex" >
+                                    {lowerValidated?(
+                                        <Icon icon={arrows_circle_check} />
+                                    ):(
+                                        <Icon icon={arrows_exclamation} />
+                                    )}
+                                    <span className={lowerValidated?'validated':'not-validated'}>At Least 1 Lower Case</span>
+                                </li>
+                                <li className="flex" >
+                                    {capitalValidated?(
+                                        <Icon icon={arrows_circle_check} />
+                                    ):(
+                                        <Icon icon={arrows_exclamation} />
+                                    )}
+                                    <span className={capitalValidated?'validated':'not-validated'}>At Least 1 Capital Letter</span>
+                                </li>
+                                <li className="flex" >
+                                    {numberValidated?(
+                                        <Icon icon={arrows_circle_check} />
+                                    ):(
+                                        <Icon icon={arrows_exclamation} />
+                                    )}
+                                    <span className={numberValidated?'validated':'not-validated'}>At Least 1 Number</span>
+                                </li>
+                                <li className="flex" >
+                                    {speacialCharecterValidated?(
+                                        <Icon icon={arrows_circle_check} />
+                                    ):(
+                                        <Icon icon={arrows_exclamation} />
+                                    )}
+                                    <span className={speacialCharecterValidated?'validated':'not-validated'}>At Least 1 </span>
+                                </li>
+                                <li className="flex" >
+                                    {lengthValidated?(
+                                        <Icon icon={arrows_circle_check} />
+                                    ):(
+                                        <Icon icon={arrows_exclamation} />
+                                    )}<span className={lengthValidated?'validated':'not-validated'}>Minimum 7 Charecter long</span>
+                                </li>
                             </ul>
                         </div>
                         <input type="text" placeholder="Enter your password" onChange={(e) => handleChange(e.target.value)} />
