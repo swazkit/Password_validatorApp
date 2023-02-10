@@ -3,6 +3,9 @@ import { useState } from "react"
 import Icon from "react-icons-kit"
 import {arrows_circle_check} from 'react-icons-kit/linea/arrows_circle_check'
 import {arrows_exclamation} from 'react-icons-kit/linea/arrows_exclamation'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
 
 
 export default function Hero() {
@@ -88,8 +91,8 @@ export default function Hero() {
         } else {
             return (
                 <>
-                    <form>
-                        <div className="info-box">
+                    <form data-aos="zoom-in" data-aos-offset="200">
+                        <div className="info-box"  >
                             <ul>
                                 <li className="flex" >
                                     {lowerValidated?(

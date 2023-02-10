@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 * {
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
@@ -145,3 +147,27 @@ li {
     display: flex;
     gap: 10px;
 }
+
+.stop {
+    height: 100vh;
+}
+
+.about-us {
+    height: 100vh;    
+    background: linear-gradient(90deg, rgba(34,42,63,1) 0%, rgba(68,68,95,1) 80%, rgba(107,94,127,1) 100%);
+}
+
+.about-us > .header {
+    padding-inline: 0;
+    font-family: 'Bebas Neue', cursive;
+    height: 276px;
+    justify-content: center;
+    align-items: center;
+    font-size: 90px;
+}
+
+.about-us > h1 {
+    margin-top: 0;
+    padding-top: 110px;
+}
+
